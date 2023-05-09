@@ -24,11 +24,15 @@ const bannerTxt = document.querySelector("#banner-txt")
 let currentSlide = 0
 const imgBaseUrl = "assets/images/slideshow/"
 const dots = document.querySelector(".dots")
+const dotSelected = document.querySelector(".dot_selected")
 
 for(let i = 0; i < slides.length; i++){
   let p = document.createElement("p")
   p.setAttribute("class", "dot")
   dots.appendChild(p)
+  if(i = slides.length){
+    p.setAttribute("class", "dot dot_selected")
+  }
 }
 
 
@@ -42,6 +46,7 @@ arrowRight.addEventListener("click", (e) => {
   }
   bannerImg.src = imgBaseUrl + slides[currentSlide].image
   bannerTxt.innerHTML = slides[currentSlide].tagLine
+  dotSelected.innerHTML = slides[currentSlide]
 });
 
 arrowLeft.addEventListener("click", () => {
@@ -52,25 +57,5 @@ arrowLeft.addEventListener("click", () => {
   console.log(currentSlide)
   bannerImg.src = imgBaseUrl + slides[currentSlide].image
   bannerTxt.innerHTML = slides[currentSlide].tagLine
+  dotSelected.innerHTML = slides[currentSlide]
 });
-
-/*document.addEventListener("DOMContentLoaded", () =>  {
-    document.querySelectorAll("#banner").forEach((carousel) => {
-      insertNumbers(carousel);
-
-    insertDots(carousel);
-
-    document.querySelectorAll(".dots").forEach((dot) => {
-      dot.addEventListener("click", (e) => {
-        let item = Array.prototype.indexOf.call(
-          e.target.parentNode.children,
-          e.target
-        );
-
-        showItems(carousel, item);
-      });
-    });
-
-    showItems(carousel, 0);
-  });
-});*/
