@@ -24,33 +24,23 @@ const bannerTxt = document.querySelector("#banner-txt")
 let currentSlide = 0
 const imgBaseUrl = "assets/images/slideshow/"
 const dots = document.querySelector(".dots")
-const dotSelected = document.querySelector(".dot_selected")
 
 for(let i = 0; i < slides.length; i++){
   let p = document.createElement("p")
   p.setAttribute("class", "dot")
   dots.appendChild(p)
- /* if(i = slides.length){
-    p.setAttribute("class", "dot dot_selected")
-  }*/
 }
 
 let dotsArray = document.querySelectorAll(".dot")
-console.log(dotsArray)
-
-
 
 arrowRight.addEventListener("click", (event) => {
-  console.log(event)
   currentSlide++
   if(currentSlide > 3){
     currentSlide = 0
   }
   bannerImg.src = imgBaseUrl + slides[currentSlide].image
   bannerTxt.innerHTML = slides[currentSlide].tagLine
- // dotSelected.innerHTML = slides[currentSlide]
   dotsArray.forEach((element, index) => {
-    console.log(index)
     if(element.classList.contains("dot_selected") === true){
       element.classList.remove("dot_selected")
     }
@@ -65,11 +55,9 @@ arrowLeft.addEventListener("click", () => {
   if(currentSlide < 0){
     currentSlide = slides.length - 1
   } 
-  console.log(currentSlide)
   bannerImg.src = imgBaseUrl + slides[currentSlide].image
   bannerTxt.innerHTML = slides[currentSlide].tagLine
   dotsArray.forEach((element, index) => {
-    console.log(index)
     if(element.classList.contains("dot_selected") === true){
       element.classList.remove("dot_selected")
     }
@@ -79,8 +67,20 @@ arrowLeft.addEventListener("click", () => {
   });
 });
 
+
+function boucle(element, index) {
+  if(element.classList.contains("dot_selected") === true){
+    element.classList.remove("dot_selected")
+  }
+  if(index === currentSlide){
+    element.classList.toggle("dot_selected")
+  }
+} 
+
+console.log(boucle)
+
+
 dotsArray.forEach((element, index) => {
-  console.log(index)
   if(index === currentSlide){
     element.classList.toggle("dot_selected")
   }
