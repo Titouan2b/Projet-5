@@ -40,14 +40,7 @@ arrowRight.addEventListener("click", (event) => {
   }
   bannerImg.src = imgBaseUrl + slides[currentSlide].image
   bannerTxt.innerHTML = slides[currentSlide].tagLine
-  dotsArray.forEach((element, index) => {
-    if(element.classList.contains("dot_selected") === true){
-      element.classList.remove("dot_selected")
-    }
-    if(index === currentSlide){
-      element.classList.toggle("dot_selected")
-    }
-  });
+  loop(dotsArray)
 });
 
 arrowLeft.addEventListener("click", () => {
@@ -57,6 +50,11 @@ arrowLeft.addEventListener("click", () => {
   } 
   bannerImg.src = imgBaseUrl + slides[currentSlide].image
   bannerTxt.innerHTML = slides[currentSlide].tagLine
+  loop(dotsArray)
+});
+
+
+function loop(dotsArray) {
   dotsArray.forEach((element, index) => {
     if(element.classList.contains("dot_selected") === true){
       element.classList.remove("dot_selected")
@@ -65,23 +63,6 @@ arrowLeft.addEventListener("click", () => {
       element.classList.toggle("dot_selected")
     }
   });
-});
-
-
-function boucle(element, index) {
-  if(element.classList.contains("dot_selected") === true){
-    element.classList.remove("dot_selected")
-  }
-  if(index === currentSlide){
-    element.classList.toggle("dot_selected")
-  }
 } 
 
-console.log(boucle)
-
-
-dotsArray.forEach((element, index) => {
-  if(index === currentSlide){
-    element.classList.toggle("dot_selected")
-  }
-});
+loop(dotsArray)
